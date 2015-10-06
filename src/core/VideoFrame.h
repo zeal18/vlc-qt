@@ -40,10 +40,10 @@ struct VLCQT_CORE_EXPORT VlcVideoFrame
     */
     VlcVideoFrame();
 
-    bool inited; /*!< initialisation status */
-
     unsigned int width; /*!< frame width */
     unsigned int height; /*!< frame height */
+
+    float sar; /*!< frame sample aspect ratio */
 
     unsigned int planeCount; /*!< plane count */
 

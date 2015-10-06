@@ -171,12 +171,6 @@ public:
     */
     float position();
 
-    /*!
-        \brief Get sample aspect ratio for current video track( vlc >= 2.1.0 ).
-        \return sample aspect ratio (float)
-    */
-    float sampleAspectRatio();
-
 public slots:
     /*! \brief Set the movie position.
 

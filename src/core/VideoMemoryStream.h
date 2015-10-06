@@ -110,6 +110,12 @@ protected:
      */
     virtual void formatCleanUpCallback() = 0;
 
+    /*!
+        \brief Source aspect ratio callback
+     */
+    virtual void aspectRatioCallback(unsigned num,
+                                     unsigned den) = 0;
+
 private:
     static void *lockCallbackInternal(void *opaque,
                                       void **planes);
@@ -126,6 +132,10 @@ private:
                                            unsigned *pitches,
                                            unsigned *lines);
     static void formatCleanUpCallbackInternal(void *opaque);
+
+    static void aspectRatioCallbackInternal(void *opaque,
+                                            unsigned num,
+                                            unsigned den);
 };
 
 #endif // VLCQT_VIDEOMEMORYSTREAM_H_

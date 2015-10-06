@@ -91,12 +91,15 @@ void VlcVideoMemoryStream::setCallbacks(VlcMediaPlayer *player)
     libvlc_video_set_format_callbacks(player->core(),
                                       formatCallbackInternal,
                                       formatCleanUpCallbackInternal);
+    libvlc_video_set_aspect_ratio_callback(player->core(),
+                                           aspectRatioCallbackInternal);
 }
 
 void VlcVideoMemoryStream::unsetCallbacks(VlcMediaPlayer *player)
 {
     libvlc_video_set_callbacks(player->core(), 0, 0, 0, 0);
     libvlc_video_set_format_callbacks(player->core(), 0, 0);
+    libvlc_video_set_aspect_ratio_callback(player->core(), 0);
 }
 
 
@@ -132,4 +135,9 @@ unsigned VlcVideoMemoryStream::formatCallbackInternal(void **opaque,
 void VlcVideoMemoryStream::formatCleanUpCallbackInternal(void *opaque)
 {
     P_THIS->formatCleanUpCallback();
+}
+
+void VlcVideoMemoryStream::aspectRatioCallbackInternal(void *opaque, unsigned num, unsigned den)
+{
+    P_THIS->aspectRatioCallback(num, den);
 }

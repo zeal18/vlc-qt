@@ -106,6 +106,7 @@ protected:
 private slots:
     void frameReady();
     void reset();
+    void aspectRatioUpdated(unsigned num, unsigned den);
 
 private:
     virtual void *lockCallback(void **planes);
@@ -117,6 +118,8 @@ private:
                                     unsigned *pitches,
                                     unsigned *lines);
     virtual void formatCleanUpCallback();
+    virtual void aspectRatioCallback(unsigned num,
+                                     unsigned den);
 
     virtual QRectF boundingRect() const;
     void geometryChanged(const QRectF &newGeometry,
